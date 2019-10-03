@@ -1,0 +1,72 @@
+## Termite Styling Program
+## Author : Aditya Shakya
+## Customized by : Tim Stadtmann
+
+[options]
+
+allow_bold = true
+audible_bell = true
+browser = xdg-open
+clickable_url = true
+cursor_blink = system
+cursor_shape = block
+dynamic_title = true
+filter_unmatched_urls = true
+font = FuraCode Nerd Font 10
+geometry = 480x280
+icon_name = terminal
+modify_other_keys = false
+mouse_autohide = false
+scroll_on_output = false
+scroll_on_keystroke = true
+scrollback_lines = 15000
+size_hints = false
+search_wrap = true
+urgent_on_bell = true
+highlight = #30343e
+
+[colors]
+
+# https://git.io/nord
+#foreground=#d8dee9
+#background=#2e3440
+foreground=#d0d0d0
+background=#3a3636
+cursor=#d8dee9
+
+#darkblue
+color0=#3b4252
+#red
+color1=#bf616a
+#green
+#color2=#a3be8c
+color2=#c37561
+#yellow
+color3=#ebcb8b
+#greyblue
+color4=#81a1c1
+#pink
+color5=#b48ead
+#lightblue
+color6=#88c0d0
+#midgrey
+color7=#e5e8f0
+
+#lightblack
+color8=#4c566a
+#red
+color9=#bf616a
+#green
+#color10=#a3be8c
+color10=#c37561
+#yellow
+color11=#ebcb8b
+#greyblue
+color12=#81a1c1
+#pink
+#color13=#b48ead
+color13=#c37561
+#greenblue
+color14=#8fbcbb
+#lightgrey
+color15=#eceff4

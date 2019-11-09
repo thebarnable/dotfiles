@@ -15,25 +15,45 @@ do
     elif [[ $str =~ .*background.* ]]; then
         color_idx=17
     elif [[ $str == *"#"* ]]; then
+        str=$(echo "$str" | tr '[:lower:]' '[:upper:]')
         colors[$color_idx]=$str
     fi
 done
 
 #for i in ${colors[@]}; do echo $i; done
+## X-RESOURCES
+cp ~/.Xresources ~/.Xresources.old
+resources_cfg=`cat ~/.Xresources.old`
 
 ## TERMITE
 cp termite/config termite/config.old
 termite_cfg=`cat termite/config.old`
 
+## CONKY
+cp conky/config conky/config.old
+conky_cfg=`cat conky/config.old`
+
+#echo "$conky_cfg"
 for i in {0..15}
 do
-    termite_cfg=$(sed -r "s/^color$i=#([0-9]|[a-f])*/color$i=${colors[$i]}/g" <<< $termite_cfg) 
+    termite_cfg=$(sed -r "s/^color$i=#([0-9]|[a-f]|[A-F])*/color$i=${colors[$i]}/g" <<< $termite_cfg) 
+    resources_cfg=$(sed -r "s/^\*color$i: *#([0-9]|[a-f]|[A-F])*/\*.color$i: ${colors[$i]}/g" <<< $resources_cfg) 
+    conky_cfg=$(sed -r "s/^color$i *= *'#([0-9]|[a-f]|[A-F])*'/color$i = '${colors[$i]}'/g" <<< $conky_cfg) 
 done
 
-termite_cfg=$(sed -r "s/^foreground=#([0-9]|[a-f])*/foreground=${colors[16]}/g" <<< $termite_cfg) 
-termite_cfg=$(sed -r "s/^background=#([0-9]|[a-f])*/background=${colors[17]}/g" <<< $termite_cfg) 
-termite_cfg=$(sed -r "s/^cursor=#([0-9]|[a-f])*/cursor=${colors[16]}/g" <<< $termite_cfg) 
+termite_cfg=$(sed -r "s/^foreground=#([0-9]|[a-f]|[A-F])*/foreground=${colors[16]}/g" <<< $termite_cfg) 
+termite_cfg=$(sed -r "s/^background=#([0-9]|[a-f]|[A-F])*/background=${colors[17]}/g" <<< $termite_cfg) 
+termite_cfg=$(sed -r "s/^cursor=#([0-9]|[a-f]|[A-F])*/cursor=${colors[16]}/g" <<< $termite_cfg) 
+
+resources_cfg=$(sed -r "s/^\*foreground: *#([0-9]|[a-f]|[A-F])*/\*foreground: ${colors[16]}/g" <<< $resources_cfg) 
+resources_cfg=$(sed -r "s/^\*background: *#([0-9]|[a-f]|[A-F])*/\*background: ${colors[17]}/g" <<< $resources_cfg) 
+resources_cfg=$(sed -r "s/^\*cursorColor: *#([0-9]|[a-f]|[A-F])*/\*cursorColor: ${colors[16]}/g" <<< $resources_cfg) 
 
 echo "$termite_cfg" > termite/config
-xdotool key ctrl+shift+r # load new termite config by pressing ctrl+shift+r
+echo "$resources_cfg" > ~/.Xresources
+echo "$conky_cfg" > conky/config
 
+xdotool key ctrl+shift+r # load new termite config by pressing ctrl+shift+r
+xrdb ~/.Xresources # load new Xresources config
+
+polybar/init.sh # kill and restart polybar

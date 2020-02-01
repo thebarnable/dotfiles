@@ -1,0 +1,8 @@
+[user]
+	email = timstadtmann@gmail.com
+    name = thebarnable
+
+[alias]
+    co = checkout
+    s = status
+    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit

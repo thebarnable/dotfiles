@@ -60,7 +60,7 @@ bindsym $mod+F2 exec google-chrome-stable
 bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec gksu pcmanfm
-bindsym $mod+F5 exec terminal -e 'mocp'
+bindsym $mod+F5 exec thunderbird
 bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b --config ~/.config/compton/config
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
@@ -284,6 +284,7 @@ exec --no-startup-id pamac-tray
 # exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
 exec --no-startup-id xautolock -time 10 -locker blurlock
+exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec_always --no-startup-id ~/.config/polybar/init.sh &
 exec_always --no-startup-id ~/.config/conky/init.sh &
 exec_always --no-startup-id ff-theme-util

@@ -70,17 +70,18 @@ default_outline_color = 'black',
 --default_color 929292 # Labs Grey
 --default_color = '#DC143C',-- crimson
 --color0 = '#ffffff',-- purewhite
-default_color = '#C37561',
-color0 = '#D0D0D0',
-color1 = '#777777',-- Gray
-color2 = '#D8BFD8',-- Thistle
-color3 = '#9ACD32',-- YellowGreen
-color4 = '#FFA07A',-- LightSalmon
-color5 = '#FFDEAD',-- NavajoWhite
-color6 = '#00BFFF',-- DeepSkycyan
-color7 = '#5F9EA0',-- Cadetcyan
-color8 = '#BDB76B',-- DarkKhaki
-color9 = '#CD5C5C',-- IndianRed
+--default_color = '#C37561',
+default_color = '#A04844',
+color0 = '#28223D',
+color1 = '#A04844',-- Gray
+color2 = '#31480B',-- Thistle
+color3 = '#D1904F',-- YellowGreen
+color4 = '#353B63',-- LightSalmon
+color5 = '#D583A7',-- NavajoWhite
+color6 = '#66836E',-- DeepSkycyan
+color7 = '#D1D2DC',-- Cadetcyan
+color8 = '#5F5974',-- DarkKhaki
+color9 = '#A16562',-- IndianRed
 --######################  End Colour Settings  ###
 --##  Borders Section  ###########################
 draw_borders = false,
@@ -140,16 +141,17 @@ update_interval = 1,
 };
 
 conky.text = [[
-${font Roboto:Light:size=72}$alignr${time %H}${color0}:${time %M}${font}${color}
-${font Roboto:Light:size=24}${voffset 12}$alignr${color0}${execi 300 LANG=${template9} LC_TIME=${template9} date +"%A"}${color},\
+${font Roboto:Light:size=72}$alignr${time %H}${color7}:${time %M}${font}${color}
+${font Roboto:Light:size=24}${voffset 12}$alignr${color7}${execi 300 LANG=${template9} LC_TIME=${template9} date +"%A"}${color},\
  ${execi 300 LANG=${template9} LC_TIME=${template9} date +"%d"}\
-${color0} ${execi 300 LANG=${template9} LC_TIME=${template9} date +"%B"}${font}${voffset 2}
-${hr}${color}${voffset 4}
-${font Roboto:pixelsize=13}${alignr} USER: ${color0}${execi 5000 whoami}${color} ${color1}I${color} MACHINE: ${color0}$nodename${color} ${color1}I${color} UPTIME: ${color0}$uptime${color}
-${font Roboto:pixelsize=13}${alignr} DISTRIBUTION: ${color0}${execi 6000 awk -F'=' '/DESCRIPTION/ {print $2}' /etc/lsb-release |sed 's/"//g'}${color} ${color1}I${color} VERSION: ${color0}${execi 6000 awk -F'=' '/DISTRIB_RELEASE=/ {printf $2" "} /CODENAME/ {print $2}' /etc/lsb-release}${color}
-${font Roboto:pixelsize=13}${alignr} ARCHITECTURE: ${color0}${machine}${color} ${color1}I${color} KERNEL: ${color0}${kernel}${color}
-${font Roboto:pixelsize=13}${alignr} ROOT: ${color0}${fs_used /}${color} / ${color0}${fs_size /}${color} ${color1}I${color} HOME: ${color0}${fs_used /home}${color} / ${color0}${fs_size /home}${color}
-${font Roboto:pixelsize=13}${alignr} CPU: ${color0}${cpu cpu0}%${color} ${color1}I${color} RAM: ${color0}$mem / $memmax${color} HD: ${color0}${fs_used_perc}%${color}
-${font Roboto:pixelsize=13}${alignr} SWAP: ${color0}${swap} / ${swapmax}${color} ${color1}I${color} SYS TEMP: ${color0}${hwmon temp 1}°C${color}
-${font Roboto:pixelsize=13}${alignr} YOU CAN INSTALL ${color0}${execpi 12000 checkupdates | wc -l} UPDATE(S)${color}
+${color7} ${execi 300 LANG=${template9} LC_TIME=${template9} date +"%B"}${font}${voffset 2}
+${hr}${color7}${voffset 4}
+${font Roboto:pixelsize=13}${alignr} USER: ${color1}${execi 5000 whoami}${color7} MACHINE: ${color1}$nodename${color7} UPTIME: ${color1}$uptime${color7}
+${font Roboto:pixelsize=13}${alignr} DISTRIBUTION: ${color1}${execi 6000 awk -F'=' '/DESCRIPTION/ {print $2}' /etc/lsb-release |sed 's/"//g'}${color7} VERSION: ${color1}${execi 6000 awk -F'=' '/DISTRIB_RELEASE=/ {printf $2" "} /CODENAME/ {print $2}' /etc/lsb-release}${color7}
+${font Roboto:pixelsize=13}${alignr} ARCHITECTURE: ${color1}${machine}${color7} KERNEL: ${color1}${kernel}${color7}
+${font Roboto:pixelsize=13}${alignr} ROOT: ${color1}${fs_used /}${color7} / ${color1}${fs_size /}${color7} HOME: ${color1}${fs_used /home}${color7} / ${color1}${fs_size /home}${color7}
+${font Roboto:pixelsize=13}${alignr} CPU: ${color1}${cpu cpu0}%${cpu cpu2}%${cpu cpu3}%${cpu cpu3}%${cpu cpu4}%${cpu cpu5}%${cpu cpu6}%${cpu cpu7}%${color7} 
+${font Roboto:pixelsize=13}${alignr} RAM: ${color1}$mem / $memmax${color7} HD: ${color1}${fs_used_perc}%${color7}
+${font Roboto:pixelsize=13}${alignr} ${color7} SYS TEMP: ${color1}${hwmon temp 1}°C${color7}
+${font Roboto:pixelsize=13}${alignr} YOU CAN INSTALL ${color1}${execpi 12000 checkupdates | wc -l} UPDATE(S)${color7}
 ]]

@@ -1,9 +1,4 @@
-## Termite Styling Program
-## Author : Aditya Shakya
-## Customized by : Tim Stadtmann
-
 [options]
-
 allow_bold = true
 audible_bell = true
 browser = xdg-open
@@ -26,47 +21,30 @@ urgent_on_bell = true
 highlight = #30343e
 
 [colors]
+foreground=#C5C8C6
+background=#1D1F21
+cursor=#C5C8C6
 
-# https://git.io/nord
-#foreground=#d8dee9
-#background=#2e3440
-foreground=#d0d0d0
-background=#3a3636
-cursor=#d8dee9
+color0=#28223D
+color8=#5F5974
 
-#darkblue
-color0=#3b4252
-#red
-color1=#bf616a
-#green
-#color2=#a3be8c
-color2=#c37561
-#yellow
-color3=#ebcb8b
-#greyblue
-color4=#81a1c1
-#pink
-color5=#b48ead
-#lightblue
-color6=#88c0d0
-#midgrey
-color7=#e5e8f0
+color1=#A04844
+color9=#A16562
 
-#lightblack
-color8=#4c566a
-#red
-color9=#bf616a
-#green
-#color10=#a3be8c
-color10=#c37561
-#yellow
-color11=#ebcb8b
-#greyblue
-color12=#81a1c1
-#pink
-#color13=#b48ead
-color13=#c37561
-#greenblue
-color14=#8fbcbb
-#lightgrey
-color15=#eceff4
+color2=#31480B
+color10=#B5BD68
+
+color3=#D1904F
+color11=#F0C674
+
+color4=#353B63
+color12=#81A2BE
+
+color5=#D583A7
+color13=#B294BB
+
+color6=#66836E
+color14=#98B19F
+
+color7=#D1D2DC
+color15=#D1D2DC

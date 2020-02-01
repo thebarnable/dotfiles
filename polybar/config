@@ -23,21 +23,28 @@ india = #C06359
 dim = #7D4860
 dark = #2B2444
 
-color0 = #363636
-color1 = #C37561
-color2 = #A0A57E
-color3 = #D1A375
-color4 = #7985A3
-color5 = #AB716D
-color6 = #98B9B1
-color7 = #D0D0D0
-color8 = #3A3636
+color0 = ${xrdb:color0} 
+color8 = ${xrdb:color8} 
+color1 = ${xrdb:color1} 
+color9 = ${xrdb:color9} 
+color2 = ${xrdb:color2} 
+color10= ${xrdb:color10} 
+color3 = ${xrdb:color3} 
+color11= ${xrdb:color11} 
+color4 = ${xrdb:color4}
+color12= ${xrdb:color12} 
+color5 = ${xrdb:color5} 
+color13= ${xrdb:color13} 
+color6 = ${xrdb:color6} 
+color14= ${xrdb:color14} 
+color7 = ${xrdb:color7} 
+color15= ${xrdb:color15} 
 
-;background = ${xrdb:color0:#222}
-background = ${self.color8} 
+
+background = ${xrdb:background:#222}
+;background = ${self.color8} 
 background-alt = #444
-;foreground = ${xrdb:color7:#222}
-foreground = ${self.color7}
+foreground = ${xrdb:foreground:#222}
 foreground-alt = ${self.color1}
 primary = #ffb52a
 secondary = #e60053
@@ -83,85 +90,6 @@ modules-right = date powermenu
 tray-position = right
 tray-padding = 2
 
-cursor-click = pointer
-cursor-scroll = ns-resize
-
-[bar/example]
-;monitor = ${env:MONITOR:HDMI-1}
-width = 100%
-height = 27
-;offset-x = 1%
-;offset-y = 1%
-radius = 6.0
-fixed-center = false
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 3
-line-color = #f00
-
-border-size = 4
-border-color = #00000000
-
-padding-left = 0
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 2
-
-;font-0 = FantasqueSansMono:pixelsize=10:bold:antialias=true;2
-;font-1 = "Font Awesome 5 Free:pixelsize=10:style=Regular;2"
-font-0 = "Source Code Pro Semibold:size=10;1"
-font-1 = "Font Awesome 5 Free:style=Solid:size=10;1"
-font-2 = "Font Awesome 5 Brands:size=10;1"
-font-3 = "Noto Sans Symbols2:size=10;1"
-font-4 = "TerminessTTF Nerd Font Mono:size=10;1"
-font-5 = "Material Icons:size=10;1"
-font-6 = "Source Code Pro:size=10;1"
-font-7 = "TSCu_Paranar:size=10;1"
-;font-0 = "Noto Sans:style=Regular,size=8;2"
-;font-1 = "Material Icons:style=Regular,size=10"
-;font-2 = Termsynu:size=8;-1
-;font-2 = "Font Awesome 5 Free:style=Solid,size=10"
-;font-0 = fixed:pixelsize=10;1
-;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-;font-2 = siji:pixelsize=10;1
-;font-2 = "Wuncon Siji:pixelsize=10;1"
-;font-0 = "Tamsyn:pixelsize=12;0"
-;font-1 = "Roboto:size=11:weight=bold;2"
-;font-2 = "Noto Sans:size=11;1"
-;font-0 = xos4 Terminus:pixelsize=8:weight=bold;0
-;font-1 = unifont:fontformat=truetype:size=8:weight=bold:antialias=false;0
-;font-2 = "Wuncon siji:pixelsize=8;1"
-;font-3 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
-;font-4 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
-;font-5 = "Font Awesome 5 Brands:pixelsize=8;1"
-
-; label-activate-font = 2
-
-modules-left = i3
-;modules-center = mpd
-modules-right = filesystem pulseaudio xkeyboard memory cpu eth temperature date powermenu
-
-tray-position = right
-tray-padding = 2
-tray-offset-y = -5
-
-;wm-restack = bspwm
-;wm-restack = i3
-
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
-cursor-click = pointer
-cursor-scroll = ns-resize
-
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
@@ -191,28 +119,6 @@ mount-0 = /
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
-
-; [module/bspwm]
-;type = internal/bspwm
-
-;label-focused = %index%
-;label-focused-background = ${colors.background-alt}
-;label-focused-underline= ${colors.primary}
-;label-focused-padding = 2
-
-;label-occupied = %index%
-;label-occupied-padding = 2
-
-;label-urgent = %index%!
-;label-urgent-background = ${colors.alert}
-;label-urgent-padding = 2
-
-;label-empty = %index%
-;label-empty-foreground = ${colors.foreground-alt}
-;label-empty-padding = 2
-
-; Separator in between workspaces
-; label-separator = |
 
 [module/i3]
 type = internal/i3
@@ -251,42 +157,6 @@ label-urgent-padding = 2
 
 ; Separator in between workspaces
 ; label-separator = |
-
-
-;[module/mpd]
-;type = internal/mpd
-;format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-;icon-prev = 
-;icon-stop = 
-;icon-play = 
-;icon-pause = 
-;icon-next = 
-
-;label-song-maxlen = 25
-;label-song-ellipsis = true
-
-;[module/xbacklight]
-;type = internal/xbacklight
-
-;format = <label> <bar>
-;label = BL
-
-;bar-width = 10
-;bar-indicator = |
-;bar-indicator-foreground = #fff
-;bar-indicator-font = 2
-;bar-fill = ─
-;bar-fill-font = 2
-;bar-fill-foreground = #9f78e1
-;bar-empty = ─
-;bar-empty-font = 2
-;bar-empty-foreground = ${colors.foreground-alt}
-
-;[module/backlight-acpi]
-;inherit = module/xbacklight
-;type = internal/backlight
-;card = intel_backlight
 
 [module/cpu]
 type = internal/cpu

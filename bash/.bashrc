@@ -59,6 +59,15 @@ match_lhs=""
 	&& match_lhs=$(dircolors --print-database)
 [[ $'\n'${match_lhs} == *$'\n'"TERM "${safe_term}* ]] && use_color=true
 
+# enable git prompt information
+source ~/.git_prompt.sh
+PROMPT_DIRTRIM=3 # shorten directories deeper than 3 subdirs
+GIT_PS1_SHOWDIRTYSTATE=1           # '*'=unstaged, '+'=staged
+# GIT_PS1_SHOWSTASHSTATE=1         # '$'=stashed
+# GIT_PS1_SHOWUNTRACKEDFILES=1     # '%'=untracked
+GIT_PS1_SHOWUPSTREAM="verbose"     # 'u='=no difference, 'u+1'=ahead by 1 commit
+GIT_PS1_STATESEPARATOR=''          # No space between branch and index status
+
 if ${use_color} ; then
 	# Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
 	if type -P dircolors >/dev/null ; then
@@ -70,12 +79,13 @@ if ${use_color} ; then
 	fi
 
 	if [[ ${EUID} == 0 ]] ; then
-		PS1='\[\033[01;31m\][\h\[\033[01;36m\] \W\[\033[01;31m\]]\$\[\033[00m\] '
-	else
-		PS1='\[\033[01;32m\][\u@\h\[\033[01;37m\] \W\[\033[01;32m\]]\$\[\033[00m\] '
+        PS1='\[\033[01;31m\][\h\[\033[01;36m\] \w$(__git_ps1 " (%s)")\[\033[01;31m\]]\$\[\033[00m\] '
+    else
+		PS1='\[\033[01;32m\][\u@\h\[\033[01;37m\] \w$(__git_ps1 " (%s)")\[\033[01;32m\]]\$\[\033[00m\] '
 	fi
+    #PS1='[\u@\h \w$(__git_ps1 " (%s)")]\$ '
 
-	alias ls='ls --color=auto -a'
+	alias ls='ls --color=auto'
 	alias grep='grep --colour=auto'
 	alias egrep='egrep --colour=auto'
 	alias fgrep='fgrep --colour=auto'
@@ -160,18 +170,19 @@ export TERMINAL=termite
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/tim/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/tim/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/tim/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/tim/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+#__conda_setup="$('/home/tim/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+#else
+#    if [ -f "/home/tim/miniconda3/etc/profile.d/conda.sh" ]; then
+#        . "/home/tim/miniconda3/etc/profile.d/conda.sh"
+#    else
+#        export PATH="/home/tim/miniconda3/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
 # <<< conda initialize <<<
+
 
 export PATH=$PATH:/opt/cuda/bin
 export STEAM_RUNTIME=1

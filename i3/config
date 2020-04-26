@@ -290,6 +290,7 @@ exec_always --no-startup-id ~/.config/polybar/init.sh &
 exec_always --no-startup-id ~/.config/conky/init.sh &
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+exec_always --no-startup-id xrandr --output HDMI-0 --left-of DP-2
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:

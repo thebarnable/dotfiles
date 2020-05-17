@@ -116,7 +116,8 @@ alias cd..='cd ..'
 alias ll='ls -la'                         
 alias bc='bc -l'
 alias diff='colordiff'
-alias vi='vim'
+alias vim='vim -u ~/.config/vim/.vimrc'
+alias vi='vim -u ~/.config/vim/.vimrc'
 
 xhost +local:root > /dev/null 2>&1
 

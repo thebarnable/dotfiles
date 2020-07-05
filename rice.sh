@@ -118,7 +118,7 @@ for config in "${tools[@]}"; do
   #echo "installdir = $installdir"
 
   # set colors
-  if [ $set_colors ] && [ -f "$dir"/rice_colors.sh ]; then
+  if [ $set_colors == 1 ] && [ -f "$dir"/rice_colors.sh ]; then
     cd "$dir" && ./rice_colors.sh "${colors[@]}" && cd ..
   fi
 

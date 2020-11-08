@@ -1,7 +1,7 @@
 [[ $- != *i* ]] && return # don't load bashrc if shell not interactive
 
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion # source bash_completion if exists
-#complete -cf sudo # enable completion for sudo as well
+complete -cf sudo # enable completion for sudo as well
 #xhost +local:root > /dev/null 2>&1 # allow root to connect to X server
 
 # enable git prompt information
@@ -60,11 +60,11 @@ shopt -s checkwinsize # Bash won't get SIGWINCH if another process is in the for
 shopt -s expand_aliases
 shopt -s histappend # enable history appending instead of overwriting
 
-source /home/tim/Tools/miniconda3/etc/profile.d/conda.sh # conda setup
+#source /home/tim/Tools/miniconda3/etc/profile.d/conda.sh # conda setup
 
 # environment variables
-export ALSA_CARD="PCH" # default sound card
-export PATH=$PATH:/opt/cuda/bin
-export STEAM_RUNTIME=1
-export VIVADO_PATH=/home/tim/Tools/Xilinx/Vivado/2019.2/
-export VITIS_PATH=/home/tim/Tools/Xilinx/Vitis/2019.2/
+#export ALSA_CARD="PCH" # default sound card
+#export PATH=$PATH:/opt/cuda/bin
+#export STEAM_RUNTIME=1
+#export VIVADO_PATH=/home/tim/Tools/Xilinx/Vivado/2019.2/
+#export VITIS_PATH=/home/tim/Tools/Xilinx/Vitis/2019.2/

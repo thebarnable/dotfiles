@@ -4,16 +4,17 @@ set -eu
 
 #loadkeys de
 
-HOSTNAME="archstick"
+HOSTNAME="beastix"
 BOOTNAME="arch_efi" # ignored on legacy
 USERNAME="tim"
-DISK="/dev/sdb" # nvme1n1 #important for legacy install
-PARTITION=$DISK
+DISK="/dev/nvme0n1" # nvme1n1 #important for legacy install
+PARTITION=$DISK"p"
 LEGACY=false
 ENCRYPT=false
-REMOVABLE=true
+REMOVABLE=false
 RAID=false
 LUKSNAME="crypt_root"
+DOTFILES="/home/tim/.config/dotfiles"
 
 OWN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 SCRIPT="$OWN_DIR/install_internal.sh"
@@ -34,7 +35,7 @@ if $LEGACY; then
   else
     echo "Create MBR with two partitions, first 400M and bootable!"
   fi
-  
+
   read
   fdisk $DISK
   sleep 1
@@ -43,7 +44,7 @@ else
   if $ENCRYPT; then
     MAIN_PARTITION=$PARTITION"3"
     echo "Create GPT with three partitions, first both 400M and first ef00!"
-#  else
+  else
     echo "Create GPT with two partitions, first 400M and first ef00!"
   fi
 
@@ -53,14 +54,14 @@ else
 fi
 
 # Overwrite paritions, uncomment if needed:
-#EFI_PARTITION=$PARTITION"1"
-#BOOT_PARTITION=$PARTITION"5"
-#MAIN_PARTITION=$PARTITION"6"
+EFI_PARTITION=$PARTITION"2"
+BOOT_PARTITION=$PARTITION"5"
+MAIN_PARTITION=$PARTITION"5"
 
 # Filesystems
-if ! $LEGACY; then
-  mkfs.msdos -F 32 $EFI_PARTITION
-fi
+#if ! $LEGACY; then
+#  mkfs.msdos -F 32 $EFI_PARTITION
+#fi
 
 mkfs.ext4 $BOOT_PARTITION # == MAIN_PARTITION if no crypt
 
@@ -70,7 +71,7 @@ if $ENCRYPT; then
   cryptsetup -v --cipher aes-xts-plain64 --key-size 512 --hash sha512 --verify-passphrase --iter-time 5000 --use-random luksFormat $MAIN_PARTITION
   cryptsetup open $MAIN_PARTITION $LUKSNAME
   mkfs.ext4 /dev/mapper/$LUKSNAME
-  
+
   mount /dev/mapper/$LUKSNAME /mnt/
   mkdir /mnt/boot
   mount $BOOT_PARTITION /mnt/boot
@@ -102,15 +103,24 @@ cp -r $DOTFILES /mnt/home/$USERNAME/.config/dotfiles
 
 ln -rs /mnt/home/$USERNAME/.config/dotfiles/termite /mnt/home/$USERNAME/.config/termite
 ln -rs /mnt/home/$USERNAME/.config/dotfiles/i3 /mnt/home/$USERNAME/.config/i3
-ln -rs /mnt/home/$USERNAME/.config/dotfiles/bash/* /mnt/home/$USERNAME/
-ln -rs /mnt/home/$USERNAME/.config/dotfiles/bash/.bashrc /mnt/home/$USERNAME/.bashrc # not sure why above ln doesnt link .bashrc
-ln -rs /mnt/home/$USERNAME/.config/dotfiles/git/* /mnt/home/$USERNAME/
-ln -rs /mnt/home/$USERNAME/.config/dotfiles/installer/* /mnt/home/$USERNAME/
+ln -rsf /mnt/home/$USERNAME/.config/dotfiles/bash/.bashrc /mnt/home/$USERNAME/.bashrc
+ln -rs /mnt/home/$USERNAME/.config/dotfiles/vim /mnt/home/$USERNAME/.config/vim
+ln -rs /mnt/home/$USERNAME/.config/dotfiles/git/.gitconfig /mnt/home/$USERNAME/.gitconfig
+cp /mnt/usr/share/git/git-prompt.sh /mnt/home/$USERNAME/.git-prompt.sh
+ln -rs /mnt/home/$USERNAME/.config/dotfiles/nitrogen /mnt/home/$USERNAME/.config/nitrogen
+ln -rs /mnt/home/$USERNAME/.config/dotfiles/polybar /mnt/home/$USERNAME/.config/polybar
+ln -rs /mnt/home/$USERNAME/.config/dotfiles/conky /mnt/home/$USERNAME/.config/conky
+ln -rs /mnt/home/$USERNAME/.config/dotfiles/compton /mnt/home/$USERNAME/.config/compton
+ln -rs /mnt/home/$USERNAME/.config/dotfiles/X11/.Xresources /mnt/home/$USERNAME/.Xresources
+ln -rs /mnt/home/$USERNAME/.config/dotfiles/X11/.xinitrc /mnt/home/$USERNAME/.xinitrc
+ln -rs /mnt/home/$USERNAME/.config/dotfiles/installer/install_post.sh /mnt/home/$USERNAME/install_post.sh
+cp /mnt/home/$USERNAME/.config/dotfiles/scripts/* /mnt/usr/bin/
 
 mv /mnt/etc/skel/.bashrc /mnt/etc/skel/.bashrc.bak
 cp /mnt/home/$USERNAME/.bashrc /mnt/etc/skel/
 cp /mnt/home/$USERNAME/.gitconfig /mnt/
-arch-chroot /mnt/ /bin/bash chown -R $USERNAME:users /home/$USERNAME 
+#arch-chroot /mnt/ /bin/bash chown -R $USERNAME:users /home/$USERNAME
+chown -R $USERNAME:users /mnt/home/$USERNAME
 
 umount -R /mnt
 if [ "$ENCRYPT" = true ]; then

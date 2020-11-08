@@ -13,8 +13,39 @@ LEGACY=false
 ENCRYPT=false
 REMOVABLE=false
 RAID=false
+DUALBOOT=true
 LUKSNAME="crypt_root"
 DOTFILES="/home/tim/.config/dotfiles"
+AUTO_PARTITION=true # if true, auto detect partition names (overrides *_PARTITION)
+EFI_PARTITION=$PARTITION"2"
+BOOT_PARTITION=$PARTITION"5"
+MAIN_PARTITION=$BOOT_PARTITION
+
+# Partition names
+if $AUTO_PARTITION; then
+  if $DUALBOOT; then
+    echo "ERROR: don't use AUTO_PARTITION option on dualboot system. Choose the partitions on your own!"
+    exit 1
+  fi
+
+  EFI_PARTITION=$PARTITION"1"
+  if $LEGACY; then
+    BOOT_PARTITION=$EFI_PARTITION
+    if ! $ENCRYPT; then
+      MAIN_PARTITION=$BOOT_PARTITION
+    else
+      MAIN_PARTITION=$PARTITION"2"
+    fi
+  else
+    BOOT_PARTITION=$PARTITION"2"
+    if ! $ENCRYPT; then
+      MAIN_PARTITION=$BOOT_PARTITION
+    else
+      MAIN_PARTITION=$PARTITION"3"
+    fi
+  fi
+fi
+
 
 OWN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 SCRIPT="$OWN_DIR/install_internal.sh"
@@ -25,12 +56,12 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # Partitions
-EFI_PARTITION=$PARTITION"1"
-MAIN_PARTITION=$PARTITION"2"
 if $LEGACY; then
-  BOOT_PARTITION=$PARTITION"1"
+  if $DUALBOOT; then
+    echo "WARNING: Dualboot has only been tested with UEFI setup yet"
+  fi
+
   if ! $ENCRYPT; then
-    MAIN_PARTITION=$PARTITION"1"
     echo "Create MBR with one partitions, bootable!"
   else
     echo "Create MBR with two partitions, first 400M and bootable!"
@@ -40,9 +71,7 @@ if $LEGACY; then
   fdisk $DISK
   sleep 1
 else
- BOOT_PARTITION=$PARTITION"2"
   if $ENCRYPT; then
-    MAIN_PARTITION=$PARTITION"3"
     echo "Create GPT with three partitions, first both 400M and first ef00!"
   else
     echo "Create GPT with two partitions, first 400M and first ef00!"
@@ -53,15 +82,10 @@ else
   sleep 1
 fi
 
-# Overwrite paritions, uncomment if needed:
-EFI_PARTITION=$PARTITION"2"
-BOOT_PARTITION=$PARTITION"5"
-MAIN_PARTITION=$PARTITION"5"
-
 # Filesystems
-#if ! $LEGACY; then
-#  mkfs.msdos -F 32 $EFI_PARTITION
-#fi
+if [ $LEGACY == false ] && [ $DUALBOOT == false ]; then
+  mkfs.msdos -F 32 $EFI_PARTITION
+fi
 
 mkfs.ext4 $BOOT_PARTITION # == MAIN_PARTITION if no crypt
 

@@ -5,13 +5,19 @@
 #xhost +local:root > /dev/null 2>&1 # allow root to connect to X server
 
 # enable git prompt information
-source ~/.git_prompt.sh
+if [[ -e ~/.git-prompt.sh ]]; then
+  source ~/.git-prompt.sh
+  GIT_PS1_SHOWDIRTYSTATE=1           # '*'=unstaged, '+'=staged
+  #GIT_PS1_SHOWSTASHSTATE=1         # '$'=stashed
+  #GIT_PS1_SHOWUNTRACKEDFILES=1     # '%'=untracked
+  GIT_PS1_SHOWUPSTREAM="verbose"     # 'u='=no difference, 'u+1'=ahead by 1 commit
+  GIT_PS1_STATESEPARATOR=''          # No space between branch and index status
+else
+  function __git_ps1 { # declare dummy function if git-prompt.sh is not available
+    true 
+  }
+fi
 PROMPT_DIRTRIM=3 # shorten directories deeper than 3 subdirs
-GIT_PS1_SHOWDIRTYSTATE=1           # '*'=unstaged, '+'=staged
-#GIT_PS1_SHOWSTASHSTATE=1         # '$'=stashed
-#GIT_PS1_SHOWUNTRACKEDFILES=1     # '%'=untracked
-GIT_PS1_SHOWUPSTREAM="verbose"     # 'u='=no difference, 'u+1'=ahead by 1 commit
-GIT_PS1_STATESEPARATOR=''          # No space between branch and index status
 
 # set prompt
 use_color=true

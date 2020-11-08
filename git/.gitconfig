@@ -2,6 +2,9 @@
 	email = timstadtmann@gmail.com
 	name = Tim Stadtmann
 
+[core]
+  editor = vi
+
 [alias]
     co = checkout
     s = status

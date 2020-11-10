@@ -66,5 +66,5 @@ shopt -s histappend # enable history appending instead of overwriting
 #export ALSA_CARD="PCH" # default sound card
 #export PATH=$PATH:/opt/cuda/bin
 #export STEAM_RUNTIME=1
-#export VIVADO_PATH=/home/tim/Tools/Xilinx/Vivado/2019.2/
-#export VITIS_PATH=/home/tim/Tools/Xilinx/Vitis/2019.2/
+export VIVADO_PATH=/opt/Xilinx/Vivado/2019.2/
+export VITIS_PATH=/opt/Xilinx/Vitis/2019.2/

@@ -33,7 +33,7 @@ pacman -S --noconfirm --needed networkmanager networkmanager-openconnect network
 pacman -S --noconfirm --needed gst-libav libgtop ntp hunspell hunspell-de hunspell-en_US
 pacman -S --noconfirm --needed lshw pwgen gst-plugins-base gst-plugins-good gst-plugins-ugly
 pacman -S --noconfirm --needed pulseeffects cppcheck git wget cifs-utils byobu
-pacman -S --noconfirm --needed chromium vim
+pacman -S --noconfirm --needed chromium vim unzip scrot xdg-user-dirs
 
 sed -i 's/Adwaita/capitaine-cursors/g' /usr/share/icons/default/index.theme
 

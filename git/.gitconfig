@@ -7,5 +7,18 @@
 
 [alias]
     co = checkout
+    cob = checkout -b 
     s = status
     l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    cm = commit -n -m
+    cma = commit -n --amend
+    d = diff
+    dv = difftool
+    gl = config --global -l
+    p = push
+    f = fetch
+    m = merge
+    r = rebase
+    ri = rebase -i
+    ap = add -p
+

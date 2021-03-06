@@ -77,7 +77,7 @@ create_symlink() {
       echo "Config file $2 already exists. Skipping..."
     else
       echo "Creating symlink $1 -> $2"
-      ln -s "$1" "$2"
+      ln -rs "$1" "$2"
     fi
   fi
 }
@@ -109,12 +109,12 @@ fi
 
 ### Create symlinks to configs if they don't exist
 mkdir -p "$INSTALLPATH"
-for config in "${tools[@]}"; do
-  dir="$DOTFILES"/"$config"
-  installdir="$INSTALLPATH"/"$config"
+for tool in "${tools[@]}"; do
+  dir="$DOTFILES"/"$tool"
+  installdir="$INSTALLPATH"/"$tool"
 
   #echo "dir = $dir"
-  #echo "config = $config"
+  #echo "tool = $tool"
   #echo "installdir = $installdir"
 
   # set colors
@@ -126,14 +126,18 @@ for config in "${tools[@]}"; do
   create_symlink "$dir" "$installdir"
 
   # additional setup for special snowflakes
-  if [ $config == 'X11' ]; then
+  if [ $tool == 'X11' ]; then
     create_symlink "$dir"/.xinitrc "$HOME"/.xinitrc
     create_symlink "$dir"/.Xresources "$HOME"/.Xresources
+  elif [ $tool == 'bash' ]; then
+    create_symlink "$dir"/.bashrc "$HOME"/.bashrc
+  elif [ $tool == 'git' ]; then
+    create_symlink "$dir"/.gitconfig "$HOME"/.gitconfig
   fi
 
   # reload new config when possible
   if [ -f "$dir/init.sh" ]; then
-    echo "Initializing $config..."
+    echo "Initializing $tool..."
     "$dir"/init.sh &
   fi
 done

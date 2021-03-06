@@ -7,6 +7,6 @@ killall -q polybar
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
 # Launch polybar
-polybar -q i3bar_left &
-polybar -q i3bar_right &
-
+polybar -c $HOME/.config/polybar/config i3bar_left &
+polybar -c $HOME/.config/polybar/config i3bar_center &
+polybar -c $HOME/.config/polybar/config i3bar_right &

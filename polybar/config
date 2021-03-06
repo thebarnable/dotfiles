@@ -53,6 +53,9 @@ alert = #bd2c40
 [bar/i3bar_left]
 include-file = ~/.config/polybar/config_left
 
+[bar/i3bar_center]
+include-file = ~/.config/polybar/config_center
+
 [bar/i3bar_right]
 include-file = ~/.config/polybar/config_right
 

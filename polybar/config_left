@@ -1,9 +1,9 @@
 include-file = ~/.config/polybar/config_common
 
-monitor= "HDMI-0"
+monitor= "DP-0"
 
-modules-left = cpu memory
+modules-left = powermenu
 modules-center = i3
-modules-right = date powermenu
+modules-right = pulseaudio eth date
 
 

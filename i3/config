@@ -262,7 +262,8 @@ exec_always --no-startup-id ~/.config/polybar/init.sh &
 #exec_always --no-startup-id ~/.config/conky/init.sh &
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-exec_always --no-startup-id xrandr --output HDMI-0 --left-of DP-0
+exec --no-startup-id xrandr --output DP-0 --left-of HDMI-0
+exec --no-startup-id xrandr --output DVI-D-0 --right-of HDMI-0
 
 # Color palette used for the terminal ( ~/.Xresources file )
 set_from_resource $term_background background

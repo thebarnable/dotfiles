@@ -51,85 +51,10 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/i3bar_left]
-monitor= "HDMI-0"
-
-width=100%
-height=27
-radius=0.0
-fixed-center=false
-bottom=false
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 3
-line-color =
-
-border-size = 
-border-color = 
-
-padding-left = 0
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 2
-
-font-0 = "Source Code Pro Semibold:size=10;1"
-font-1 = "Font Awesome 5 Free:style=Solid:size=10;1"
-font-2 = "Font Awesome 5 Brands:size=10;1"
-font-3 = "Noto Sans Symbols2:size=10;1"
-;font-4 = "TerminessTTF Nerd Font Mono:size=10;1"
-;font-5 = "Material Icons:size=10;1"
-;font-6 = "Source Code Pro:size=10;1"
-;font-7 = "TSCu_Paranar:size=10;1"
-
-modules-left = eth pulseaudio
-modules-center = i3
-modules-right = date powermenu
-
-tray-position = right
-tray-padding = 2
-
+include-file = ~/.config/polybar/config_left
 
 [bar/i3bar_right]
-monitor= "DP-0"
-
-width=100%
-height=27
-radius=0.0
-fixed-center=false
-bottom=false
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 3
-line-color =
-
-border-size = 
-border-color = 
-
-padding-left = 0
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 2
-
-font-0 = "Source Code Pro Semibold:size=10;1"
-font-1 = "Font Awesome 5 Free:style=Solid:size=10;1"
-font-2 = "Font Awesome 5 Brands:size=10;1"
-font-3 = "Noto Sans Symbols2:size=10;1"
-;font-4 = "TerminessTTF Nerd Font Mono:size=10;1"
-;font-5 = "Material Icons:size=10;1"
-;font-6 = "Source Code Pro:size=10;1"
-;font-7 = "TSCu_Paranar:size=10;1"
-
-modules-left = eth pulseaudio
-modules-center = i3
-modules-right = date powermenu
-
-tray-position = right
-tray-padding = 2
+include-file = ~/.config/polybar/config_right
 
 [module/xwindow]
 type = internal/xwindow
@@ -150,16 +75,6 @@ label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
-
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /
-
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/i3]
 type = internal/i3
@@ -202,19 +117,45 @@ label-urgent-padding = 2
 
 [module/cpu]
 type = internal/cpu
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
-label = %percentage:2%%
+interval = 0.5
+format = <label> <ramp-coreload>
+label = 
+label-foreground = ${colors.foreground-alt}
+format-padding = 1
+
+ramp-coreload-0 = ▁
+ramp-coreload-0-font = 2
+ramp-coreload-0-foreground = ${colors.foreground}
+ramp-coreload-1 = ▂
+ramp-coreload-1-font = 2
+ramp-coreload-1-foreground = ${colors.foreground}
+ramp-coreload-2 = ▃
+ramp-coreload-2-font = 2
+ramp-coreload-2-foreground = ${colors.foreground}
+ramp-coreload-3 = ▄
+ramp-coreload-3-font = 2
+ramp-coreload-3-foreground = ${colors.foreground}
+ramp-coreload-4 = ▅
+ramp-coreload-4-font = 2
+ramp-coreload-4-foreground = ${colors.foreground}
+ramp-coreload-5 = ▆
+ramp-coreload-5-font = 2
+ramp-coreload-5-foreground = ${colors.foreground}
+ramp-coreload-6 = ▇
+ramp-coreload-6-font = 2
+ramp-coreload-6-foreground = ${colors.foreground}
+ramp-coreload-7 = █
+ramp-coreload-7-font = 2
+ramp-coreload-7-foreground = ${colors.foreground}
 
 [module/memory]
 type = internal/memory
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
-label = %percentage_used%%
+format =  <label>
+format-padding = 0
+label = %gb_used% | %gb_total%
+
+format-foreground = ${colors.foreground-alt}
+label-foreground = ${colors.foreground}
 
 [module/wlan]
 type = internal/network
@@ -247,15 +188,9 @@ format-connected-padding = 2
 format-connected-foreground = ${colors.foreground}
 format-connected-background = ${colors.background}
 ;format-connected-underline = #55aa55
-format-connected-prefix = "🖧 "
+format-connected-prefix = ""
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
-
-;format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date
@@ -292,34 +227,6 @@ ramp-volume-0 = 
 ramp-volume-1 =  
 ramp-volume-2 = 
 
-[module/alsa]
-type = internal/alsa
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
-
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
-
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
@@ -348,39 +255,50 @@ format-spacing = 1
 
 label-open =  
 label-open-foreground = ${colors.foreground-alt}
-;label-close =  cancel
-label-close = cancel
-label-close-foreground = ${colors.foreground}
+label-close = x
+label-close-foreground = ${colors.foreground-alt}
 label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
+label-separator-foreground = ${colors.foreground}
 
-menu-0-0 = reboot
+menu-0-0 = ﰇ
 menu-0-0-exec = menu-open-1
-menu-0-1 = power off
+menu-0-0-foreground = ${colors.foreground-alt}
+menu-0-1 = ⏼
 menu-0-1-exec = menu-open-2
-menu-0-2 = logout
+menu-0-1-foreground = ${colors.foreground-alt}
+menu-0-2 = 﫼
 menu-0-2-exec = menu-open-3
+menu-0-2-foreground = ${colors.foreground-alt}
 
-menu-1-0 = cancel
+menu-1-0 = x
 menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
+menu-1-0-foreground = ${colors.foreground-alt}
+menu-1-1 = ﰇ
 menu-1-1-exec = systemctl reboot
-menu-1-2 = cancel
+menu-1-1-foreground = ${colors.foreground-alt}
+menu-1-2 = x
 menu-1-2-exec = menu-open-0
+menu-1-2-foreground = ${colors.foreground-alt}
 
-menu-2-0 = power off
+menu-2-0 = ⏼
 menu-2-0-exec = systemctl poweroff
-menu-2-1 = cancel
+menu-2-0-foreground = ${colors.foreground-alt}
+menu-2-1 = x
 menu-2-1-exec = menu-open-0
-menu-2-2 = cancel
+menu-2-1-foreground = ${colors.foreground-alt}
+menu-2-2 = x
 menu-2-2-exec = menu-open-0
+menu-2-2-foreground = ${colors.foreground-alt}
 
-menu-3-0 = cancel
+menu-3-0 = x
 menu-3-0-exec = menu-open-0
-menu-3-1 = logout
+menu-3-0-foreground = ${colors.foreground-alt}
+menu-3-1 = 﫼
 menu-3-1-exec = i3-msg exit
-menu-3-2 = cancel
+menu-3-1-foreground = ${colors.foreground-alt}
+menu-3-2 = x
 menu-3-2-exec = menu-open-0
+menu-3-2-foreground = ${colors.foreground-alt}
 
 [settings]
 screenchange-reload = true

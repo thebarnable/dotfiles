@@ -1,0 +1,7 @@
+include-file = ~/.config/polybar/config_common
+
+monitor= "DP-0"
+
+modules-left = eth pulseaudio
+modules-center = i3
+modules-right = date powermenu

@@ -3,7 +3,7 @@
 	name = Tim Stadtmann
 
 [core]
-  editor = vi
+  editor = vim
 
 [alias]
     co = checkout

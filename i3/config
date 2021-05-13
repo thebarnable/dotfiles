@@ -40,7 +40,7 @@ bindsym $mod+Ctrl+m exec pavucontrol
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Start Applications
-bindsym $mod+F2 exec chromium
+bindsym $mod+F2 exec google-chrome-stable
 bindsym $mod+F3 exec thunar
 bindsym $mod+F5 exec thunderbird
 bindsym $mod+t exec --no-startup-id pkill picom

@@ -1,0 +1,7 @@
+include-file = ~/.config/polybar/config_common
+
+monitor = HDMI-0
+
+modules-left = memory
+modules-center = i3
+modules-right = cpu

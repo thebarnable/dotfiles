@@ -68,3 +68,5 @@ source /opt/miniconda3/etc/profile.d/conda.sh # conda setup
 #export STEAM_RUNTIME=1
 export VIVADO_PATH=/opt/xilinx/Vivado/2019.2/
 export VITIS_PATH=/opt/xilinx/Vitis/2019.2/
+export ARTIFACTS_DIR_REMOTE="stadtmann@calc02:/mnt/data/gitlab/artifacts"
+export ARTIFACTS_DIR_LOCAL=/home/tim/Downloads/artifacts

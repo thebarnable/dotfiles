@@ -16,9 +16,9 @@ RAID=false
 DUALBOOT=true
 LUKSNAME="crypt_root"
 DOTFILES="/home/tim/.config/dotfiles"
-AUTO_PARTITION=true # if true, auto detect partition names (overrides *_PARTITION)
-EFI_PARTITION=$PARTITION"2"
-BOOT_PARTITION=$PARTITION"5"
+AUTO_PARTITION=false # if true, auto detect partition names (overrides *_PARTITION)
+EFI_PARTITION=$PARTITION"1"
+BOOT_PARTITION=$PARTITION"7"
 MAIN_PARTITION=$BOOT_PARTITION
 
 # Partition names

@@ -25,25 +25,24 @@ pacman -S --noconfirm --needed base-devel linux-lts linux-lts-headers linux-firm
 pacman -S --noconfirm --needed dialog grub intel-ucode amd-ucode dhcpcd arch-install-scripts nano ntfs-3g
 pacman -S --noconfirm --needed bash-completion netctl htop iotop openssh mesa net-tools os-prober mtools wpa_supplicant rsync
 pacman -S --noconfirm --needed acpid avahi dbus cups system-config-printer tree cmake boost boost-libs openmp gdb
-#pacman -S --noconfirm --needed gnome gnome-extra gnome-shell-extensions chrome-gnome-shell gdm xorg xorg-server gnome-tweaks
+pacman -S --noconfirm --needed gnome gnome-extra gnome-shell-extensions gdm xorg xorg-server gnome-tweaks
 pacman -S --noconfirm --needed gedit-plugins meld pavucontrol firefox libreoffice-fresh-de rhythmbox evince gparted
-pacman -S --noconfirm --needed xorg xorg-server xorg-xinit xterm i3-gaps i3lock lightdm lightdm-gtk-greeter termite nitrogen feh archlinux-wallpaper picom capitaine-cursors dmenu xautolock thunar
+#pacman -S --noconfirm --needed xorg xorg-server xorg-xinit xterm i3-gaps i3lock lightdm lightdm-gtk-greeter termite nitrogen feh archlinux-wallpaper picom capitaine-cursors dmenu xautolock thunar
 pacman -S --noconfirm --needed alsa nvidia-lts nvidia-utils nvtop ttf-dejavu
 pacman -S --noconfirm --needed networkmanager networkmanager-openconnect network-manager-applet bluez bluez-utils pulseaudio-bluetooth 
 pacman -S --noconfirm --needed gst-libav libgtop ntp hunspell hunspell-de hunspell-en_US
 pacman -S --noconfirm --needed lshw pwgen gst-plugins-base gst-plugins-good gst-plugins-ugly
-pacman -S --noconfirm --needed pulseeffects cppcheck git wget cifs-utils byobu
+pacman -S --noconfirm --needed cppcheck git wget cifs-utils byobu
 pacman -S --noconfirm --needed chromium vim unzip scrot xdg-user-dirs
 
 sed -i 's/Adwaita/capitaine-cursors/g' /usr/share/icons/default/index.theme
 
 systemctl enable sshd
-#systemctl enable dhcpcd
-systemctl enable lightdm.service
-#systemctl enable gdm
+#systemctl enable lightdm.service
+systemctl enable gdm
 systemctl enable acpid
 systemctl enable avahi-daemon
-systemctl enable org.cups.cupsd.service
+#systemctl enable org.cups.cupsd.service
 systemctl enable bluetooth
 systemctl enable NetworkManager
 systemctl enable ntpd.service

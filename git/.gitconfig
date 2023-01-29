@@ -22,3 +22,5 @@
     ri = rebase -i
     ap = add -p
 
+[init]
+	defaultBranch = main

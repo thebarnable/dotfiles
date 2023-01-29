@@ -60,7 +60,7 @@ shopt -s checkwinsize # Bash won't get SIGWINCH if another process is in the for
 shopt -s expand_aliases
 shopt -s histappend # enable history appending instead of overwriting
 
-#source /home/tim/Tools/miniconda3/etc/profile.d/conda.sh # conda setup
+source "/home/tim/Tools/miniconda3/etc/profile.d/conda.sh" # conda setup  # commented out by conda initialize
 
 # environment variables
 #export ALSA_CARD="PCH" # default sound card

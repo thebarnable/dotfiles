@@ -68,3 +68,9 @@ source "/home/tim/Tools/miniconda3/etc/profile.d/conda.sh" # conda setup  # comm
 #export STEAM_RUNTIME=1
 export VIVADO_PATH=/opt/Xilinx/Vivado/2019.2/
 export VITIS_PATH=/opt/Xilinx/Vitis/2019.2/
+
+export ARTIFACTS_DIR_LOCAL=/home/tim/Downloads/artifacts
+export ARTIFACTS_DIR_REMOTE="stadtmann@gitlab-runner:/mnt/bigspace/gitlab/artifacts"
+source /opt/nest/bin/nest_vars.sh
+
+export PATH="/home/$USER/.config/dotfiles/scripts:$PATH"

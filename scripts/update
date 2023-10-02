@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "### 1: sudo pacman -Sy archlinux-keyring"
+sudo pacman -Sy archlinux-keyring
+
+echo "### 2: sudo pacman-key --refresh-keys" 
+sudo pacman-key --refresh-keys 
+
+echo "### 3: sudo pacman -Su"
+sudo pacman -Su

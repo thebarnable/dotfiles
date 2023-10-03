@@ -28,7 +28,7 @@ pacman -S --noconfirm --needed acpid avahi dbus cups system-config-printer tree 
 pacman -S --noconfirm --needed gnome gnome-extra gnome-shell-extensions gdm xorg xorg-server gnome-tweaks
 pacman -S --noconfirm --needed gedit-plugins meld pavucontrol firefox libreoffice-fresh-de rhythmbox evince gparted
 #pacman -S --noconfirm --needed xorg xorg-server xorg-xinit xterm i3-gaps i3lock lightdm lightdm-gtk-greeter termite nitrogen feh archlinux-wallpaper picom capitaine-cursors dmenu xautolock thunar
-pacman -S --noconfirm --needed alsa nvidia-lts nvidia-utils nvtop ttf-dejavu
+pacman -S --noconfirm --needed alsa-utils nvidia-lts nvidia-utils nvtop ttf-dejavu
 pacman -S --noconfirm --needed networkmanager networkmanager-openconnect network-manager-applet bluez bluez-utils pulseaudio-bluetooth 
 pacman -S --noconfirm --needed gst-libav libgtop ntp hunspell hunspell-de hunspell-en_US
 pacman -S --noconfirm --needed lshw pwgen gst-plugins-base gst-plugins-good gst-plugins-ugly

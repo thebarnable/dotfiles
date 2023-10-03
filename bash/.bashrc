@@ -66,5 +66,29 @@ shopt -s histappend # enable history appending instead of overwriting
 #export ALSA_CARD="PCH" # default sound card
 #export PATH=$PATH:/opt/cuda/bin
 #export STEAM_RUNTIME=1
-#export VIVADO_PATH=/home/tim/Tools/Xilinx/Vivado/2019.2/
-#export VITIS_PATH=/home/tim/Tools/Xilinx/Vitis/2019.2/
+export PATH=/home/tim/.local/bin:$PATH
+#source /home/tim/.local/lib/python3.10/site-packages/nest-c566adbc8/bin/nest_vars.sh
+export VIVADO_PATH=/opt/Xilinx/Vivado/2019.2/
+export VITIS_PATH=/opt/Xilinx/Vitis/2019.2/
+[ -r /home/tim/.byobu/prompt ] && . /home/tim/.byobu/prompt   #byobu-prompt#
+#export PYTHONPATH="/home/tim/Projects/noisysnns":"/home/tim/.local/lib/python3.10":$PYTHONPATH
+export PYTHONPATH="/home/tim/Projects/noisysnns":$PYTHONPATH
+export LD_LIBRARY_PATH=/home/tim/.local/lib/python3.10/site-packages/nvidia_cublas_cu11-11.10.3.66-py3.10-linux-x86_64.egg/nvidia/cublas/lib:$LD_LIBRARY_PATH # pytorch fixup 1
+export LD_LIBRARY_PATH=/home/tim/.local/lib/python3.10/site-packages/nvidia_cudnn_cu11-8.5.0.96-py3.10-linux-x86_64.egg/nvidia/cudnn/lib:$LD_LIBRARY_PATH # pytorch fixup 2
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/tim/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/tim/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/tim/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/tim/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

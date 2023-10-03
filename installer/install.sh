@@ -4,19 +4,19 @@ set -eu
 
 #loadkeys de
 
-HOSTNAME="beastix"
+HOSTNAME="stickix"
 BOOTNAME="arch_efi" # ignored on legacy
 USERNAME="tim"
-DISK="/dev/nvme0n1" # nvme1n1 #important for legacy install
-PARTITION=$DISK"p"
+DISK="/dev/sda" # nvme1n1 #important for legacy install
+PARTITION=$DISK
 LEGACY=false
 ENCRYPT=false
-REMOVABLE=false
+REMOVABLE=true
 RAID=false
-DUALBOOT=true
+DUALBOOT=false
 LUKSNAME="crypt_root"
 DOTFILES="/home/tim/.config/dotfiles"
-AUTO_PARTITION=false # if true, auto detect partition names (overrides *_PARTITION)
+AUTO_PARTITION=true # if true, auto detect partition names (overrides *_PARTITION)
 EFI_PARTITION=$PARTITION"1"
 BOOT_PARTITION=$PARTITION"7"
 MAIN_PARTITION=$BOOT_PARTITION

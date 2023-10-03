@@ -54,6 +54,7 @@ alias ll='ls -lah'
 alias bc='bc -l'
 alias vim='vim -u ~/.config/vim/.vimrc'
 alias vi='vim -u ~/.config/vim/.vimrc'
+alias notes='cd ~/Nextcloud/Dokumente/Notizbuch && obsidian . & > /tmp/obsidian.log'
 
 # shell options
 shopt -s checkwinsize # Bash won't get SIGWINCH if another process is in the foreground.

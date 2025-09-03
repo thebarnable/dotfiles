@@ -52,11 +52,11 @@ echo " ########## Installing done"
 # Settings
 echo "$HOSTNAME" > /etc/hostname
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
-ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 echo "KEYMAP=de" >> /etc/vconsole.conf
-localectl set-x11-keymap de pc105 nodeadkeys
+# localectl set-x11-keymap de pc105 nodeadkeys  ## somehow crashes
 echo "Please set a new root password:"
 while ! passwd
 do

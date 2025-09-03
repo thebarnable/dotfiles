@@ -55,6 +55,7 @@ alias bc='bc -l'
 alias vim='vim -u ~/.config/vim/.vimrc'
 alias vi='vim -u ~/.config/vim/.vimrc'
 alias notes='cd ~/Nextcloud/Dokumente/Notizbuch && obsidian . & > /tmp/obsidian.log'
+alias android='~/Programs/Android/SDK/android-studio/bin/studio.sh &'
 
 # shell options
 shopt -s checkwinsize # Bash won't get SIGWINCH if another process is in the foreground.
@@ -74,8 +75,8 @@ export VITIS_PATH=/opt/Xilinx/Vitis/2019.2/
 [ -r /home/tim/.byobu/prompt ] && . /home/tim/.byobu/prompt   #byobu-prompt#
 #export PYTHONPATH="/home/tim/Projects/noisysnns":"/home/tim/.local/lib/python3.10":$PYTHONPATH
 export PYTHONPATH="/home/tim/Projects/noisysnns":$PYTHONPATH
-export LD_LIBRARY_PATH=/home/tim/.local/lib/python3.10/site-packages/nvidia_cublas_cu11-11.10.3.66-py3.10-linux-x86_64.egg/nvidia/cublas/lib:$LD_LIBRARY_PATH # pytorch fixup 1
-export LD_LIBRARY_PATH=/home/tim/.local/lib/python3.10/site-packages/nvidia_cudnn_cu11-8.5.0.96-py3.10-linux-x86_64.egg/nvidia/cudnn/lib:$LD_LIBRARY_PATH # pytorch fixup 2
+#export LD_LIBRARY_PATH=/home/tim/.local/lib/python3.10/site-packages/nvidia_cublas_cu11-11.10.3.66-py3.10-linux-x86_64.egg/nvidia/cublas/lib:$LD_LIBRARY_PATH # pytorch fixup 1
+#export LD_LIBRARY_PATH=/home/tim/.local/lib/python3.10/site-packages/nvidia_cudnn_cu11-8.5.0.96-py3.10-linux-x86_64.egg/nvidia/cudnn/lib:$LD_LIBRARY_PATH # pytorch fixup 2
 
 
 # >>> conda initialize >>>
@@ -93,3 +94,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+source ~/Projects/nest-simulator/build/bin/nest_vars.sh

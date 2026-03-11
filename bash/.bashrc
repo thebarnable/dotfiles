@@ -62,36 +62,6 @@ shopt -s checkwinsize # Bash won't get SIGWINCH if another process is in the for
 shopt -s expand_aliases
 shopt -s histappend # enable history appending instead of overwriting
 
-#source /home/tim/Tools/miniconda3/etc/profile.d/conda.sh # conda setup
-
 # environment variables
-#export ALSA_CARD="PCH" # default sound card
-#export PATH=$PATH:/opt/cuda/bin
-#export STEAM_RUNTIME=1
 export PATH=/home/tim/.local/bin:$PATH
-#source /home/tim/.local/lib/python3.10/site-packages/nest-c566adbc8/bin/nest_vars.sh
-export VIVADO_PATH=/opt/Xilinx/Vivado/2019.2/
-export VITIS_PATH=/opt/Xilinx/Vitis/2019.2/
-[ -r /home/tim/.byobu/prompt ] && . /home/tim/.byobu/prompt   #byobu-prompt#
-#export PYTHONPATH="/home/tim/Projects/noisysnns":"/home/tim/.local/lib/python3.10":$PYTHONPATH
-export PYTHONPATH="/home/tim/Projects/noisysnns":$PYTHONPATH
-#export LD_LIBRARY_PATH=/home/tim/.local/lib/python3.10/site-packages/nvidia_cublas_cu11-11.10.3.66-py3.10-linux-x86_64.egg/nvidia/cublas/lib:$LD_LIBRARY_PATH # pytorch fixup 1
-#export LD_LIBRARY_PATH=/home/tim/.local/lib/python3.10/site-packages/nvidia_cudnn_cu11-8.5.0.96-py3.10-linux-x86_64.egg/nvidia/cudnn/lib:$LD_LIBRARY_PATH # pytorch fixup 2
 
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/tim/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/tim/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/tim/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/tim/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-source ~/Projects/nest-simulator/build/bin/nest_vars.sh
